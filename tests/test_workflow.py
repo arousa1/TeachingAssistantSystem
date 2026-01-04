@@ -24,6 +24,10 @@ def test_end_to_end():
         "report": "",
     }
     final = graph.invoke(state)
+    # 查看分类结果
+    for item in final["classified"]:
+        print("[test] file:", item["file_path"], "-> type:", item["type"])
+
     assert len(final["files"]) == 2
     assert len(final["classified"]) == 2
     types = {c["type"] for c in final["classified"]}

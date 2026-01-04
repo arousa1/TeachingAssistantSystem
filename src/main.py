@@ -1,12 +1,15 @@
 """
 一键启动入口
+
+支持命令行：
+python main.py --zip xxx.zip
 """
 import argparse
 import os
 import sys
 from dotenv import load_dotenv
 
-# 把 src 加入路径（双击 main.py 时也能找到模块）
+# 把 src 加入路径（双击运行也能找到包）
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from agent.graph import graph
@@ -15,7 +18,7 @@ from agent.state import AgentState
 load_dotenv()
 
 def main():
-    parser = argparse.ArgumentParser(description="AI 自动解压 + 文件分类 Agent")
+    parser = argparse.ArgumentParser(description="AI 自动解压-分类-处理 Agent")
     parser.add_argument("--zip", required=True, help="zip/rar 压缩包路径")
     args = parser.parse_args()
 
@@ -25,6 +28,8 @@ def main():
         "files": [],
         "classified": [],
         "report": "",
+        "grouped": {},
+        "group_keys": [],
     }
 
     final_state = graph.invoke(state)

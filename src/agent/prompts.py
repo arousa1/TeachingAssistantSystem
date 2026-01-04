@@ -1,12 +1,13 @@
 """
 LLM 提示模板集中管理
+后续想改分类规则、加语言、调置信度，只改这里。
 """
 CLASSIFY_PROMPT = """
 You are a file-type expert.  
 Given the file name and optional header bytes, output **only** a JSON object:
 {
-  "type": "code/doc/image/archive/other",
-  "language": "py/js/cpp/pdf/md/...",   // if code or doc
+  "type": "code/doc/other",
+  "language": "py/js/ts/c/cpp/pdf/md/doc/docx/..",   // if code or doc
   "confidence": 0.95
 }
 Rules:

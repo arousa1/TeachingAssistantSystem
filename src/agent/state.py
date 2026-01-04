@@ -7,6 +7,9 @@ LangGraph 的每一个节点都会接收 & 返回这个 TypedDict，
 from typing import List, Dict, TypedDict
 
 class AgentState(TypedDict):
+    scan_dir: str  # 用户选择的文件夹
+    pkg_queue: List[str]  # 待解压的压缩包绝对路径
+    current_pkg: str  # 正在处理的压缩包
     archive_path: str          # 原始压缩包绝对路径
     extract_to: str            # 解压后根目录
     files: List[str]           # 解压出的所有文件完整路径

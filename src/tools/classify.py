@@ -7,6 +7,7 @@ from ..agent.prompts import CLASSIFY_PROMPT
 
 model = get_llm()
 
+# 单文件分类
 def classify_file(file_path: str) -> dict:
     name = os.path.basename(file_path)
     header = b""
